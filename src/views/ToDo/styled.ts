@@ -15,6 +15,7 @@ export const styles = StyleSheet.create({
         marginBottom: 20,
         marginLeft: 15,
         fontSize: 30,
+        fontWeight: 'bold'
     },
     backTheme: {
         backgroundColor: 'rgba(0, 0, 0, 0.96)',
