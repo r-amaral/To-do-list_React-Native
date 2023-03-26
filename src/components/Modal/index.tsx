@@ -1,4 +1,6 @@
 import React from 'react';
+import DateTimePicker from '@react-native-community/datetimepicker';
+import IconClock from 'react-native-vector-icons/AntDesign';
 import {
   View,
   Modal,
@@ -6,29 +8,65 @@ import {
   TextInput,
   TouchableOpacity,
   Text,
+  Alert,
 } from 'react-native';
-import DateTimePicker from '@react-native-community/datetimepicker';
-import IconClock from 'react-native-vector-icons/AntDesign';
+
+import {ModalPropsContext} from '../../views/ToDo';
+import {TaskContext} from '../../Context';
 
 import {styles} from './styled';
-import {ModalPropsContext} from '../../views/ToDo';
 
 const ModalTask = () => {
+  const [date, setDate] = React.useState(new Date());
   const [describe, setDescribe] = React.useState<string>('');
+  const [time, setTime] = React.useState<string>('');
   const [timeModal, setTimeModal] = React.useState<boolean>(false);
 
   const {modalVisible, setModalVisible} = React.useContext(ModalPropsContext);
+  const {tasks, setTasks} = React.useContext(TaskContext);
+
+  const createTask = () => {
+    if (!describe || !time) return getAlert();
+
+    setTasks([...tasks, {description: describe, hour: time}]);
+    setTime('');
+    setDescribe('');
+    setModalVisible(false);
+  };
+
+  const onChange = (event: any, selectedData: any) => {
+    const currentDate = selectedData || date;
+
+    const tempDate = new Date(currentDate);
+
+    const timeClock = tempDate.toLocaleTimeString('en-US', {
+      hour: 'numeric',
+      minute: 'numeric',
+      hour12: true,
+    });
+
+    setTime(timeClock);
+    setTimeModal(false);
+    setDate(currentDate);
+  };
 
   const getTimeModal = () => (
     <DateTimePicker
       testID="dataTimePicker"
-      value={new Date()}
+      value={date}
       mode={'time'}
       is24Hour={true}
       display="default"
-      onChange={() => setTimeModal(false)}
+      onChange={onChange}
     />
   );
+
+  const getAlert = () =>
+    Alert.alert(
+      'Empty data',
+      'please add a description or schedule for your task',
+      [{style: 'cancel'}, {text: 'OK'}],
+    );
 
   return (
     <Modal
@@ -56,7 +94,7 @@ const ModalTask = () => {
             <Button
               title="Finish"
               color="#5F33E1"
-              onPress={() => setModalVisible(false)}
+              onPress={() => createTask()}
             />
           </View>
           {!!timeModal && getTimeModal()}
