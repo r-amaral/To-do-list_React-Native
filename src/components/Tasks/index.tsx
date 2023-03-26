@@ -4,8 +4,13 @@ import {View, Text} from 'react-native';
 
 import {styles} from './styled';
 
-const Task = () => {
-  const [isSelected, setSelection] = React.useState(false);
+interface ITasksProps {
+  description: string;
+  hour: string;
+}
+
+const Task = ({description, hour}: ITasksProps) => {
+  const [isSelected, setSelection] = React.useState<boolean>(false);
 
   return (
     <View style={styles.container}>
@@ -17,8 +22,8 @@ const Task = () => {
         onPress={() => setSelection(!isSelected)}
       />
       <View>
-        <Text style={styles.hour}>8:00 AM</Text>
-        <Text style={styles.description}>Go to church</Text>
+        <Text style={styles.hour}>{description}</Text>
+        <Text style={styles.description}>{hour}</Text>
       </View>
     </View>
   );

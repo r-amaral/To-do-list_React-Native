@@ -1,7 +1,4 @@
-import {
-
-    StyleSheet,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
     containerTask: {
@@ -9,7 +6,7 @@ export const styles = StyleSheet.create({
         backgroundColor: 'rgba(0, 0, 0, 0.96)',
         paddingLeft: 15,
         paddingRight: 15,
-        paddingBottom: 50,
+        paddingBottom: 15,
         gap: 20,
     },
     title: {
@@ -22,4 +19,5 @@ export const styles = StyleSheet.create({
     backTheme: {
         backgroundColor: 'rgba(0, 0, 0, 0.96)',
     },
+
 });

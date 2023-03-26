@@ -7,10 +7,13 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "react-devtool": "react-devtools"
   },
   "dependencies": {
+    "@react-native-community/datetimepicker": "^7.0.0",
     "react": "18.2.0",
+    "react-devtools": "^4.27.4",
     "react-native": "0.71.4",
     "react-native-bouncy-checkbox": "^3.0.7",
     "react-native-vector-icons": "^9.2.0"

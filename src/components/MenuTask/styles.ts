@@ -1,19 +1,29 @@
 import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
-    MenuContainer: {
-        flex: 1,
+    IconContainer: {
         justifyContent: 'space-between',
         flexDirection: 'row',
         alignItems: 'center',
+
+        backgroundColor: '#EDEAEA',
         borderColor: '#5F33E1',
         borderWidth: 1,
-        backgroundColor: '#EDEAEA',
-        minHeight: 80,
         borderTopLeftRadius: 20,
         borderTopRightRadius: 20,
-        padding: 10,
+
+        width: '100%',
+        minHeight: 70,
+
+        padding: 30,
         paddingTop: 0,
-        paddingBottom: 0
-    }
+        paddingBottom: 0,
+    },
+
+    MenuContainer: {
+        flex: 1,
+        minHeight: 70,
+        alignItems: "center",
+        position: 'relative',
+    },
 })

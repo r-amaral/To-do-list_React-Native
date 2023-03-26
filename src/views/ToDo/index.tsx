@@ -1,45 +1,49 @@
 import React from 'react';
-
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import {SafeAreaView, ScrollView, StatusBar, Text, View} from 'react-native';
 
 import Header from '../../components/Header';
 import MenuTask from '../../components/MenuTask';
+import ModalTask from '../../components/Modal';
 import Task from '../../components/Tasks';
+import {TaskContext} from '../../Context';
 
 import {styles} from './styled';
 
+interface IModalProps {
+  modalVisible: boolean;
+  setModalVisible: Function;
+}
+
+export const ModalPropsContext = React.createContext({} as IModalProps);
+
 const ToDo = (): JSX.Element => {
-  const isDarkMode = useColorScheme() === 'dark';
+  const [modalVisible, setModalVisible] = React.useState<boolean>(false);
+
+  const {tasks} = React.useContext(TaskContext);
 
   return (
-    <SafeAreaView style={styles.backTheme}>
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={styles.backTheme}>
-        <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-        <Header />
-        <Text style={styles.title}>To Do</Text>
-        <View style={styles.containerTask}>
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-          <Task />
-        </View>
-      </ScrollView>
-      <MenuTask />
-    </SafeAreaView>
+    <ModalPropsContext.Provider value={{modalVisible, setModalVisible}}>
+      <SafeAreaView style={styles.backTheme}>
+        <ScrollView
+          contentInsetAdjustmentBehavior="automatic"
+          style={styles.backTheme}>
+          <StatusBar barStyle={'light-content'} />
+          <Header />
+          <Text style={styles.title}>To Do</Text>
+          <View style={styles.containerTask}>
+            {tasks.map((task: any) => (
+              <Task
+                key={task.id}
+                description={task.description}
+                hour={task.hour}
+              />
+            ))}
+          </View>
+        </ScrollView>
+        <ModalTask />
+        <MenuTask />
+      </SafeAreaView>
+    </ModalPropsContext.Provider>
   );
 };
 
