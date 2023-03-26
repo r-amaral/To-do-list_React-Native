@@ -1,6 +1,8 @@
 import React from 'react';
 import BouncyCheckbox from 'react-native-bouncy-checkbox';
-import {View, Text, StyleSheet} from 'react-native';
+import {View, Text} from 'react-native';
+
+import {styles} from './styled';
 
 const Task = () => {
   const [isSelected, setSelection] = React.useState(false);
@@ -21,24 +23,5 @@ const Task = () => {
     </View>
   );
 };
-
-const styles = StyleSheet.create({
-  container: {
-    borderWidth: 1.5,
-    borderColor: 'white',
-    borderRadius: 20,
-    borderStyle: 'solid',
-    flexDirection: 'row',
-    alignItems: 'center',
-    padding: 10,
-  },
-  hour: {
-    color: 'white',
-  },
-  description: {
-    color: 'white',
-    marginTop: 20,
-  },
-});
 
 export default Task;
