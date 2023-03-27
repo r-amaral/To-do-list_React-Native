@@ -45,6 +45,7 @@ const ToDo = (): JSX.Element => {
                   key={task.id}
                   description={task.description}
                   hour={task.hour}
+                  id={task.id}
                 />
               ))}
             </View>

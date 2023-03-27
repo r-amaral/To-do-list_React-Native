@@ -30,7 +30,10 @@ const ModalTask = () => {
   const createTask = () => {
     if (!describe || !time) return getAlert();
 
-    setTasks([...tasks, {description: describe, hour: time}]);
+    const lastId = Math.max(...tasks.map((a: any) => a.id)) + 1;
+
+    console.log(lastId);
+    setTasks([...tasks, {id: lastId + 1, description: describe, hour: time}]);
     setTime('');
     setDescribe('');
     setModalVisible(false);

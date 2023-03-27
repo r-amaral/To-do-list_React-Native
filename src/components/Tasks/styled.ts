@@ -8,7 +8,11 @@ export const styles = StyleSheet.create({
         borderStyle: 'solid',
         flexDirection: 'row',
         alignItems: 'center',
+        justifyContent: 'space-between',
         padding: 10,
+    },
+    MainContent: {
+        flexDirection: 'row'
     },
     hour: {
         color: 'white',
@@ -17,4 +21,8 @@ export const styles = StyleSheet.create({
         color: 'white',
         marginTop: 20,
     },
+    IconContainer: {
+        gap: 10
+    }
+
 });
