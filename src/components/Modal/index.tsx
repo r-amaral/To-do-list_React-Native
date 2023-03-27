@@ -1,6 +1,8 @@
 import React from 'react';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import IconClock from 'react-native-vector-icons/AntDesign';
+import IconExit from 'react-native-vector-icons/Ionicons';
+
 import {
   View,
   Modal,
@@ -56,7 +58,7 @@ const ModalTask = () => {
       value={date}
       mode={'time'}
       is24Hour={true}
-      display="default"
+      display="clock"
       onChange={onChange}
     />
   );
@@ -78,6 +80,12 @@ const ModalTask = () => {
       }}>
       <View style={styles.ModalContainer}>
         <View style={styles.ModalView}>
+          <View style={styles.IconContainer}>
+            <Text style={styles.TitleAdd}>Add Task</Text>
+            <TouchableOpacity onPress={() => setModalVisible(false)}>
+              <IconExit name="exit" size={40} color="#5F33E1" />
+            </TouchableOpacity>
+          </View>
           <View style={styles.ModalElements}>
             <TextInput
               placeholder="description"

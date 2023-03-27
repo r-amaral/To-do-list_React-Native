@@ -21,7 +21,9 @@ export const styles = StyleSheet.create({
         backgroundColor: 'white',
         borderRadius: 20,
         padding: 35,
-        alignItems: 'center',
+        paddingTop: 10,
+        gap: 20,
+        alignItems: 'flex-end',
         shadowColor: '#000',
         shadowOffset: {
             width: 0,
@@ -30,14 +32,27 @@ export const styles = StyleSheet.create({
         shadowOpacity: 0.25,
         shadowRadius: 4,
         elevation: 5,
+
     },
     ModalElements: {
         alignItems: 'stretch',
         gap: 20,
         width: '100%',
     },
+    TitleAdd: {
+        fontSize: 24,
+        color: '#5F33E1',
+        fontWeight: 'bold'
+    },
+    IconContainer: {
+        width: '100%',
+        flexDirection: "row",
+        justifyContent: 'space-between',
+        alignItems: 'center'
+    },
     TimeContainer: {
         flexDirection: 'row',
+        alignItems: 'center',
         justifyContent: 'space-evenly',
     },
     TimeText: {
